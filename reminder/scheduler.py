@@ -34,7 +34,7 @@ def run_scheduler():
         if now >= class_time - timedelta(minutes=30):
             if not already_sent(key30):
                 send_mail(subject, 30, link)
-                mark_sent(key45)
+                mark_sent(key30)
 
         if now >= class_time - timedelta(minutes=10):
             if not already_sent(key10):
