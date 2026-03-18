@@ -9,17 +9,6 @@ load_dotenv()
 EMAIL = os.getenv("OUTLOOK_EMAIL")
 PASSWORD = os.getenv("OUTLOOK_PASSWORD")
 
-LOG_FILE = "sent_log.txt"
-def already_sent(key):
-    if not os.path.exists(LOG_FILE):
-        return False
-    with open(LOG_FILE, "r") as f:
-        return key in f.read()
-        
-def mark_sent(key):
-    with open(LOG_FILE, "a") as f:
-        f.write(key + "\n")
-
 def send_mail(students, subject, link, minutes):
 
     msg = MIMEMultipart()
