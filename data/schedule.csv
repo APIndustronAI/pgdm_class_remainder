@@ -1,9 +1,9 @@
 subject,link,datetime,reminder45_sent,reminder10_sent
-TEST_CLASS1,https://www.google.com/,18-03-2026 15:26,no,no
-TEST_CLASS2,https://www.google.com/,19-03-2026 15:27,no,no
-TEST_CLASS3,https://www.google.com/,20-03-2026 15:28,no,no
-TEST_CLASS4,https://www.google.com/,21-03-2026 15:29,no,no
-TEST_CLASS5,https://www.google.com/,22-03-2026 15:30,no,no
-TEST_CLASS6,https://www.google.com/,23-03-2026 15:31,no,no
-TEST_CLASS7,https://www.google.com/,24-03-2026 15:32,no,no
-TEST_CLASS8,https://www.google.com/,25-03-2026 15:33,no,no
+TEST_CLASS1,https://www.google.com/,2026-03-18 15:38,no,no
+TEST_CLASS2,https://www.google.com/,2026-03-19 15:32,no,no
+TEST_CLASS3,https://www.google.com/,2026-03-20 15:33,no,no
+TEST_CLASS4,https://www.google.com/,2026-03-21 15:34,no,no
+TEST_CLASS5,https://www.google.com/,2026-03-22 15:35,no,no
+TEST_CLASS6,https://www.google.com/,2026-03-23 15:31,no,no
+TEST_CLASS7,https://www.google.com/,2026-03-24 15:36,no,no
+TEST_CLASS8,https://www.google.com/,2026-03-25 15:37,no,no
