@@ -20,7 +20,7 @@ def run_scheduler():
     for i in range(len(df)):
 
         subject = df.loc[i, "subject"]
-        link = df.loc[i, "class_link"]
+        link = df.loc[i, "link"]
 
         class_time = datetime.strptime(
             df.loc[i, "datetime"],
