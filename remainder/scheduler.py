@@ -6,8 +6,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-WINDOW45 = int(os.getenv("REMINDER_WINDOW_45", 12))
-WINDOW10 = int(os.getenv("REMINDER_WINDOW_10", 11))
+WINDOW45 = int(os.getenv("REMINDER_WINDOW_45", 45))
+WINDOW10 = int(os.getenv("REMINDER_WINDOW_10", 5))
 
 STUDENTS = [
     "arunprakashr123@gmail.com"
