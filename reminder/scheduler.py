@@ -33,4 +33,4 @@ def run_scheduler():
                 send_mail(STUDENTS, df.loc[i,"subject"],df.loc[i,"link"], WINDOW10)
                 df.loc[i,"reminder10_sent"] = "yes"
 
-    df.to_csv("data/schedule.csv",index=False)
+    df.to_csv(URL,index=False)
