@@ -23,7 +23,7 @@ jobs:
           pip install pandas python-dotenv
 
       - name: Run script
-        run: python remainder/main.py
+        run: python reminder/main.py
         env:
           OUTLOOK_EMAIL: ${{ secrets.OUTLOOK_EMAIL }}
           OUTLOOK_PASSWORD: ${{ secrets.OUTLOOK_PASSWORD }}
