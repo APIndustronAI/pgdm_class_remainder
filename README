@@ -1,0 +1,203 @@
+# 📧 PGDM Class Reminder Automation (Serverless Cloud Scheduler)
+
+## 🚀 Overview
+
+This project is a **fully automated class reminder system** that sends email notifications to students before the class start time.
+
+The system runs **24/7 in the cloud using GitHub Actions scheduler** and reads the **live class schedule from Google Sheets**, allowing weekly updates without changing code.
+
+This solution is **100% free, serverless, and requires no manual intervention once activated.**
+
+---
+
+## 🎯 Features
+
+* ✅ Automated email reminders
+* ✅ 45-minute and 10-minute reminder logic
+* ✅ Live schedule updates via Google Sheets
+* ✅ Runs in GitHub cloud (no laptop/server needed)
+* ✅ No database required (stateless cron design)
+* ✅ Secure credential storage using GitHub Secrets
+* ✅ Modular Python architecture
+* ✅ Resume-ready real automation project
+
+---
+
+## 🧠 Architecture
+
+```
+Google Sheet (Live Schedule)
+        ↓
+GitHub Actions Scheduler
+        ↓
+Python Reminder Engine
+        ↓
+Outlook SMTP Email Notification
+```
+
+---
+
+## 📂 Project Structure
+
+```
+pgdm-class-reminder/
+│
+├── reminder/
+│     ├── main.py
+│     ├── scheduler.py
+│     ├── email_service.py
+│
+├── requirements.txt
+├── .gitignore
+└── .github/workflows/reminder.yml
+```
+
+---
+
+## 📝 Schedule Format (Google Sheet)
+
+Create a Google Sheet with columns:
+
+| subject | datetime         | class_link         |
+| ------- | ---------------- | ------------------ |
+| Finance | 2026-03-25 09:00 | https://teams.link |
+
+### Important Rules
+
+* Time format must be: `YYYY-MM-DD HH:MM`
+* Time must be IST
+* Do NOT rename column headers
+* Publish sheet as CSV using **File → Share → Publish to web**
+
+---
+
+## ⚙️ Local Setup (Optional Testing)
+
+Install dependencies:
+
+```
+pip install -r requirements.txt
+```
+
+Create `.env` file:
+
+```
+OUTLOOK_EMAIL=your_email@outlook.com
+OUTLOOK_PASSWORD=your_app_password
+```
+
+Run:
+
+```
+python reminder/main.py
+```
+
+---
+
+## ☁️ GitHub Cloud Setup
+
+### 1️⃣ Upload Project to GitHub
+
+Create repository and upload all project files.
+
+⚠️ Do NOT upload `.env`
+
+---
+
+### 2️⃣ Add GitHub Secrets
+
+Go to:
+
+```
+Repository → Settings → Secrets and variables → Actions
+```
+
+Add:
+
+* `OUTLOOK_EMAIL`
+* `OUTLOOK_PASSWORD`
+
+---
+
+### 3️⃣ Scheduler Workflow
+
+Workflow file:
+
+```
+.github/workflows/reminder.yml
+```
+
+Example cron:
+
+```
+cron: "*/10 * * * *"
+```
+
+This runs reminder system every 10 minutes.
+
+---
+
+## ⭐ Scheduler Activation Step (VERY IMPORTANT)
+
+GitHub scheduled workflows may not start automatically in new repositories.
+
+To activate scheduler:
+
+1. Make a small commit (example: update this README)
+2. Run workflow manually once from **Actions tab**
+3. Wait 10–20 minutes
+4. Automatic runs will start appearing
+
+You should see:
+
+```
+Actor: github-actions
+```
+
+---
+
+## 🧪 Testing Reminder
+
+Set class time in Google Sheet:
+
+```
+Current IST time + 30 minutes
+```
+
+Wait for scheduler execution.
+
+Email reminder should be sent.
+
+---
+
+## ⚠️ GitHub Scheduler Limitations
+
+* Not real-time (may delay 5–20 minutes)
+* Can skip runs if repo inactive
+* Not suitable for mission-critical scheduling
+
+---
+
+## 🚀 Future Improvements
+
+* AI schedule extractor from Outlook email
+* Telegram / WhatsApp reminder bot
+* HTML email template with join button
+* Student self-subscription system
+* Logging dashboard
+* Database persistence layer
+
+---
+
+## 👨‍💻 Author
+
+Automation system built to solve real academic scheduling challenges using:
+
+* Python
+* GitHub Actions
+* Serverless cron design
+* Google Sheets integration
+
+---
+
+⭐ If you found this project useful, consider giving a star.
