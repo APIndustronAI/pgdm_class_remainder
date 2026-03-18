@@ -4,7 +4,7 @@ import os
 EMAIL = os.getenv("OUTLOOK_EMAIL")
 PASSWORD = os.getenv("OUTLOOK_PASSWORD")
 
-STUDENTS = ["student1@gmail.com"]
+STUDENTS = ["arunprakashr123@gmail.com"]
 
 def send_mail(subject, minutes, link):
 
