@@ -9,12 +9,16 @@ load_dotenv()
 EMAIL = os.getenv("OUTLOOK_EMAIL")
 PASSWORD = os.getenv("OUTLOOK_PASSWORD")
 
-def send_mail(students, subject, link, minutes):
+STUDENTS = [
+    "arunprakashr123@gmail.com"
+]
 
-    msg = MIMEMultipart()
+def send_mail(subject, minutes, link):
 
-    msg["From"] = str(EMAIL)
-    msg["To"] = ", ".join(students)
+    server = smtplib.SMTP("smtp.office365.com", 587)
+    server.starttls()
+    server.login(EMAIL, PASSWORD)
+
     msg["Subject"] = f"PGDM Cohort3 Reminder: {subject} Weekend Class"
 
     body = f"""
@@ -31,13 +35,6 @@ Be ready before start time. Join early to avoid attendance issues.
 Thanks,
 AP
 """
-
-    msg.attach(MIMEText(body, "plain", "utf-8"))
-
-    server = smtplib.SMTP("smtp.office365.com", 587)
-    server.starttls()
-    server.login(str(EMAIL), str(PASSWORD))
-
-    server.sendmail(str(EMAIL), students, msg.as_string())
-
+    message = msg["Subject"]
+    server.sendmail(EMAIL, STUDENTS, message)
     server.quit()
