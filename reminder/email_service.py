@@ -12,10 +12,10 @@ def send_mail(subject, minutes, link):
     server.starttls()
     server.login(EMAIL, PASSWORD)
 
-    message = f"""Subject: PGDM Cohort3 Weekend Class Reminder
+    message = f"""Subject: PGDM Cohort3 {subject} Weekend Class Reminder
 Hi Students,
 
-This is a reminder that our {subject} class starts in {minutes} minutes.
+This is a reminder that our {subject} class starts less than {minutes} minutes.
 
 Be ready before start time. Join early to avoid attendance issues.
 
