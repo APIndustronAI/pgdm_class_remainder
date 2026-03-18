@@ -14,7 +14,7 @@ STUDENTS = [
 ]
 
 def run_scheduler():
-    URL = "https://docs.google.com/spreadsheets/d/1rZm-MQ31I43vxfA561_sW2grmzNiKA20YxUmfZZDsjQ/edit?usp=drive_link"
+    URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ4Ku3ZAYr79s_-mMWSwCdCmWchh3VD0CEXrsVqoz2rVyT95GI-mJeQIRRRvj88Z_u87qJUXHr4dmp6/pub?output=csv"
     df = pd.read_csv(URL)
 
     now = datetime.utcnow() + timedelta(hours=5,minutes=30)
