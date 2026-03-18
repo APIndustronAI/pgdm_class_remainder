@@ -1,29 +1,43 @@
 import smtplib
 import os
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from dotenv import load_dotenv
+
+load_dotenv()
 
 EMAIL = os.getenv("OUTLOOK_EMAIL")
 PASSWORD = os.getenv("OUTLOOK_PASSWORD")
 
-STUDENTS = ["arunprakashr123@gmail.com"]
+def send_mail(students, subject, link, minutes):
 
-def send_mail(subject, minutes, link):
+    msg = MIMEMultipart()
 
-    server = smtplib.SMTP("smtp.office365.com", 587)
-    server.starttls()
-    server.login(EMAIL, PASSWORD)
+    msg["From"] = str(EMAIL)
+    msg["To"] = ", ".join(students)
+    msg["Subject"] = f"PGDM Cohort3 Reminder: {subject} Weekend Class"
 
-    message = f"""Subject: PGDM Cohort3 {subject} Weekend Class Reminder
+    body = f"""
+Reminder 🚨
+
 Hi Students,
 
-This is a reminder that our {subject} class starts less than {minutes} minutes.
+This is a reminder that our **{subject}** class starts in **{minutes}** minutes.
+
+Join Link: {link}
 
 Be ready before start time. Join early to avoid attendance issues.
-
-Join link: {link}
 
 Thanks,
 AP
 """
 
-    server.sendmail(EMAIL, STUDENTS, message)
+    msg.attach(MIMEText(body, "plain", "utf-8"))
+
+    server = smtplib.SMTP("smtp.office365.com", 587)
+    server.starttls()
+    server.login(str(EMAIL), str(PASSWORD))
+
+    server.sendmail(str(EMAIL), students, msg.as_string())
+
     server.quit()
