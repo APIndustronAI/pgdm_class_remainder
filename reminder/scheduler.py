@@ -11,11 +11,7 @@ WINDOW10 = int(os.getenv("REMINDER_WINDOW_10", 10))
 
 STUDENTS = [
     "arunprakashr123@gmail.com"
-]
-
-def run_scheduler():
-   
-
+] 
 def run_scheduler():
     SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ4Ku3ZAYr79s_-mMWSwCdCmWchh3VD0CEXrsVqoz2rVyT95GI-mJeQIRRRvj88Z_u87qJUXHr4dmp6/pub?output=csv"
     df = pd.read_csv(SHEET_URL)
