@@ -2,6 +2,7 @@ name: PGDM Reminder
 
 on:
   workflow_dispatch:
+  push: 
   schedule:
     - cron: "*/10 * * * *"
 
