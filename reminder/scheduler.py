@@ -29,7 +29,7 @@ def run_scheduler():
                 df.loc[i,"reminder45_sent"] = "yes"
 
         if df.loc[i,"reminder10_sent"] == "no":
-            if now >= class_time - timedelta(minutes<=WINDOW10) and now < class_time:
+            if now >= class_time - timedelta(minutes=WINDOW10) and now < class_time:
                 send_mail(STUDENTS, df.loc[i,"subject"],df.loc[i,"link"], WINDOW10)
                 df.loc[i,"reminder10_sent"] = "yes"
 
