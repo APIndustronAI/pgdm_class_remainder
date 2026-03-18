@@ -24,12 +24,12 @@ def run_scheduler():
         class_time = datetime.strptime(str(df.loc[i,"datetime"]), "%Y-%m-%d %H:%M")
 
         if df.loc[i,"reminder45_sent"] == "no":
-            if now >= class_time - timedelta(minutes=WINDOW45) and now < class_time - timedelta(minutes=WINDOW45-5):
+            if now >= class_time - timedelta(minutes<=WINDOW45) and now < class_time - timedelta(minutes=WINDOW45-5):
                 send_mail(STUDENTS, df.loc[i,"subject"], df.loc[i,"link"], WINDOW45)
                 df.loc[i,"reminder45_sent"] = "yes"
 
         if df.loc[i,"reminder10_sent"] == "no":
-            if now >= class_time - timedelta(minutes=WINDOW10) and now < class_time:
+            if now >= class_time - timedelta(minutes<=WINDOW10) and now < class_time:
                 send_mail(STUDENTS, df.loc[i,"subject"],df.loc[i,"link"], WINDOW10)
                 df.loc[i,"reminder10_sent"] = "yes"
 
