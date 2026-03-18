@@ -1,5 +1,5 @@
 subject,link,datetime,reminder45_sent,reminder10_sent
-TEST_CLASS1,https://www.google.com/,18-03-2026 14:50,no,no
+TEST_CLASS1,https://www.google.com/,18-03-2026 14:48,no,no
 TEST_CLASS2,https://www.google.com/,19-03-2026 14:53,no,no
 TEST_CLASS3,https://www.google.com/,20-03-2026 14:55,no,no
 TEST_CLASS4,https://www.google.com/,21-03-2026 14:56,no,no
@@ -7,15 +7,3 @@ TEST_CLASS5,https://www.google.com/,22-03-2026 14:57,no,no
 TEST_CLASS6,https://www.google.com/,23-03-2026 14:58,no,no
 TEST_CLASS7,https://www.google.com/,24-03-2026 14:59,no,no
 TEST_CLASS8,https://www.google.com/,25-03-2026 15:00,no,no
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
