@@ -1,42 +1,36 @@
 import pandas as pd
-import os
 from datetime import datetime, timedelta
-from email_service import send_mail   # ⭐ IMPORTANT IMPORT
+from email_service import send_mail
+import os
+from dotenv import load_dotenv
 
-SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ4Ku3ZAYr79s_-mMWSwCdCmWchh3VD0CEXrsVqoz2rVyT95GI-mJeQIRRRvj88Z_u87qJUXHr4dmp6/pub?output=csv"
-LOG_FILE = "sent_log.txt"
+load_dotenv()
 
-def already_sent(key):
-    if not os.path.exists(LOG_FILE):
-        return False
-    with open(LOG_FILE, "r") as f:
-        return key in f.read()
+WINDOW45 = int(os.getenv("REMINDER_WINDOW_45", 45))
+WINDOW10 = int(os.getenv("REMINDER_WINDOW_10", 10))
 
-def mark_sent(key):
-    with open(LOG_FILE, "a") as f:
-        f.write(key + "\n")
+STUDENTS = [
+    "arunprakashr123@gmail.com"
+]
 
 def run_scheduler():
 
-    df = pd.read_csv(SHEET_URL)
-    now = datetime.utcnow() + timedelta(hours=5, minutes=30)
+    df = pd.read_csv("data/schedule.csv")
+
+    now = datetime.utcnow() + timedelta(hours=5,minutes=30)
+
     for i in range(len(df)):
-        subject = df.loc[i, "subject"]
-        link = df.loc[i, "link"]
-        class_time = datetime.strptime(
-            df.loc[i, "datetime"],
-            "%Y-%m-%d %H:%M"
-        )
 
-        key30 = subject + "_30"
-        key10 = subject + "_10"
+        class_time = datetime.strptime(str(df.loc[i,"datetime"]), "%Y-%m-%d %H:%M")
 
-        if now >= class_time - timedelta(minutes=30):
-            if not already_sent(key30):
-                send_mail(subject, 30, link)
-                mark_sent(key30)
+        if df.loc[i,"reminder45_sent"] == "no":
+            if now >= class_time - timedelta(minutes=WINDOW45) and now < class_time - timedelta(minutes=WINDOW45-5):
+                send_mail(STUDENTS, df.loc[i,"subject"], df.loc[i,"link"], WINDOW45)
+                df.loc[i,"reminder45_sent"] = "yes"
 
-        if now >= class_time - timedelta(minutes=10):
-            if not already_sent(key10):
-                send_mail(subject, 10, link)
-                mark_sent(key10)
+        if df.loc[i,"reminder10_sent"] == "no":
+            if now >= class_time - timedelta(minutes=WINDOW10) and now < class_time:
+                send_mail(STUDENTS, df.loc[i,"subject"],df.loc[i,"link"], WINDOW10)
+                df.loc[i,"reminder10_sent"] = "yes"
+
+    df.to_csv("data/schedule.csv",index=False)
