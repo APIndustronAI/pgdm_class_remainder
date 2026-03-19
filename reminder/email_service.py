@@ -26,5 +26,5 @@ Thanks,
 AP
 """
 
-    server.sendmail(EMAIL, STUDENTS, message)
+    server.sendmail(EMAIL, STUDENTS, message.encode("utf-8"))
     server.quit()
