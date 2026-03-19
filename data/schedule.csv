@@ -1,4 +1,4 @@
-subject,datetime,link,reminder30_sent,reminder10_sent
+subject,datetime,link,reminder45_sent,reminder10_sent
 Test1,2026-03-19 14:30,https://google.com,no,no
 Test2,2026-03-19 15:20,https://google.com,no,no
 Test3,2026-03-19 16:10,https://google.com,no,no
